@@ -303,53 +303,53 @@ const filters = [
 
 const packages = [
   {
-    id: "padrao",
-    name: "Vídeo Padrão",
-    duration: "30 segundos • cenário único",
-    price: "79,90",
+    id: "essencial-30",
+    name: "Vídeo Essencial 30s",
+    duration: "30 segundos • múltiplas cenas",
+    price: "197",
     oldPrice: null,
-    badge: "OPÇÃO ECONÔMICA",
+    badge: "PARA COMEÇAR",
     description:
-      "Para empresas que querem divulgar produtos ou serviços com qualidade profissional e investimento mais econômico.",
+      "Para empresas que querem divulgar produtos ou serviços com qualidade profissional, roteiro estratégico e acabamento de cinema.",
     features: [
       "Vídeo de 30 segundos",
-      "Produção em cenário único",
+      "Produção com múltiplas cenas",
       "Roteiro e locução profissional",
       "Edição, trilha e identidade visual",
-      "Apresentação clara e direta",
+      "Até 5 ajustes no vídeo",
       "Atendimento pelo WhatsApp",
     ],
     featured: false,
     whatsappMessage:
-      "Olá, equipe da VerboVídeo! Vim pelo site e tenho interesse no Vídeo Padrão de 30 segundos, em cenário único, por R$ 79,90.",
+      "Olá, equipe da VerboVídeo! Vim pelo site e tenho interesse no Vídeo Essencial de 30 segundos por R$ 197.",
   },
   {
-    id: "personalizado-30",
-    name: "Vídeo Personalizado 30s",
-    duration: "30 segundos • múltiplas cenas",
-    price: "157",
-    oldPrice: "197",
+    id: "profissional-30",
+    name: "Vídeo Profissional 30s",
+    duration: "30 segundos • com mascote",
+    price: "297",
+    oldPrice: null,
     badge: "MAIS ESCOLHIDO",
     description:
-      "Produção personalizada para apresentar sua empresa, oferta ou serviço de forma objetiva, marcante e alinhada à sua marca.",
+      "Produção personalizada com mascote ou avatar exclusivo para dar rosto, voz e personalidade à sua marca.",
     features: [
       "Produção com múltiplas cenas",
       "Roteiro personalizado",
       "Locução profissional",
       "Edição e identidade visual",
-      "1 mascote ou avatar",
+      "1 mascote ou avatar exclusivo",
       "Até 5 ajustes no vídeo",
     ],
     featured: true,
     whatsappMessage:
-      "Olá, equipe da VerboVídeo! Vim pelo site e tenho interesse no Vídeo Personalizado de 30 segundos por R$ 157.",
+      "Olá, equipe da VerboVídeo! Vim pelo site e tenho interesse no Vídeo Profissional de 30 segundos com mascote por R$ 297.",
   },
   {
-    id: "personalizado-60",
-    name: "Vídeo Personalizado 60s",
-    duration: "60 segundos • múltiplas cenas",
-    price: "257",
-    oldPrice: "297",
+    id: "profissional-60",
+    name: "Vídeo Profissional 60s",
+    duration: "60 segundos • com mascote",
+    price: "497",
+    oldPrice: null,
     badge: "APRESENTAÇÃO COMPLETA",
     description:
       "Mais tempo para desenvolver a apresentação da empresa, do produto ou serviço com profundidade e força comercial.",
@@ -358,14 +358,25 @@ const packages = [
       "Roteiro aprofundado",
       "Locução profissional",
       "Edição e identidade visual",
-      "1 mascote ou avatar",
+      "1 mascote ou avatar exclusivo",
       "Até 8 ajustes no vídeo",
     ],
     featured: false,
     whatsappMessage:
-      "Olá, equipe da VerboVídeo! Vim pelo site e tenho interesse no Vídeo Personalizado de 60 segundos por R$ 257.",
+      "Olá, equipe da VerboVídeo! Vim pelo site e tenho interesse no Vídeo Profissional de 60 segundos com mascote por R$ 497.",
   },
 ];
+
+type Testimonial = {
+  quote: string;
+  name: string;
+  company: string;
+  result?: string;
+};
+
+// Depoimentos reais, publicados com autorização do cliente.
+// Enquanto a lista estiver vazia, o bloco de depoimentos não aparece no site.
+const testimonials: Testimonial[] = [];
 
 const faqs = [
   {
@@ -376,7 +387,7 @@ const faqs = [
   {
     question: "O mascote está incluso?",
     answer:
-      "Sim. Um mascote ou avatar está incluso no vídeo. Personagens adicionais recebem orçamento conforme o projeto.",
+      "Nos vídeos Profissionais de 30s e 60s, um mascote ou avatar exclusivo está incluso. O vídeo Essencial não inclui mascote. Personagens adicionais recebem orçamento conforme o projeto.",
   },
   {
     question: "Qual é o prazo de produção?",
@@ -406,9 +417,9 @@ function PricingSection({
         <p className="section-kicker">ESCOLHA O FORMATO IDEAL</p>
         <h2>Qualidade profissional em três opções bem definidas.</h2>
         <p>
-          Escolha entre a praticidade do cenário único e produções
-          personalizadas com múltiplas cenas. Se tiver dúvida, nossa equipe
-          orienta você pelo WhatsApp.
+          Escolha entre o vídeo essencial e produções profissionais com
+          mascote exclusivo. Se tiver dúvida, nossa equipe orienta você pelo
+          WhatsApp.
         </p>
       </div>
       <div className="pricing-grid three-columns">
@@ -485,7 +496,7 @@ function PricingSection({
 
 export default function Home() {
   const [selectedPackage, setSelectedPackage] = useState(
-    "Vídeo Padrão — 30 segundos — cenário único — R$ 79,90",
+    "Vídeo Profissional — 30 segundos — com mascote — R$ 297",
   );
   const [requestSent, setRequestSent] = useState(false);
   const [activeFilter, setActiveFilter] = useState("Todos");
@@ -589,6 +600,7 @@ export default function Home() {
           <nav className="desktop-nav" aria-label="Navegação principal">
             <a href="#servicos">Serviços</a>
             <a href="#portfolio">Portfólio</a>
+            <a href="#resultados">Resultados</a>
             <a href="#formatos">Investimento</a>
             <a href="#sobre">Nossa história</a>
           </nav>
@@ -630,8 +642,8 @@ export default function Home() {
               vontade de agir.
             </p>
             <p className="hero-price-callout">
-              Vídeos profissionais para sua empresa <strong>a partir de R$ 79,90.</strong>
-              <span>Do cenário único à produção personalizada com múltiplas cenas.</span>
+              Vídeos profissionais para sua empresa <strong>a partir de R$ 197.</strong>
+              <span>Do vídeo essencial à produção completa com mascote exclusivo.</span>
             </p>
 
             <div className="hero-actions">
@@ -698,12 +710,12 @@ export default function Home() {
 
         <section className="proof-bar" aria-label="Diferenciais da VerboVídeo">
           <div>
-            <strong>A PARTIR DE R$ 79,90</strong>
+            <strong>A PARTIR DE R$ 197</strong>
             <span>opções para cada objetivo</span>
           </div>
           <i />
           <div>
-            <strong>PADRÃO OU PERSONALIZADO</strong>
+            <strong>ESSENCIAL OU COM MASCOTE</strong>
             <span>você escolhe o formato</span>
           </div>
           <i />
@@ -774,6 +786,52 @@ export default function Home() {
         </section>
 
         <PricingSection packageWhatsappLinks={packageWhatsappLinks} />
+
+        <section className="results-section" id="resultados">
+          <div className="results-heading">
+            <p className="section-kicker">RESULTADOS</p>
+            <h2>Marcas de vários segmentos já confiam na VerboVídeo.</h2>
+            <p>
+              Cada projeto do portfólio é um trabalho real, feito para uma
+              empresa real, com roteiro, locução e acabamento pensados para
+              gerar resultado.
+            </p>
+          </div>
+          <div className="results-stats">
+            <div>
+              <strong>{portfolio.length}</strong>
+              <span>projetos no portfólio</span>
+            </div>
+            <div>
+              <strong>{filters.length - 1}</strong>
+              <span>segmentos atendidos</span>
+            </div>
+            <div>
+              <strong>3 dias</strong>
+              <span>úteis para a entrega</span>
+            </div>
+            <div>
+              <strong>100% online</strong>
+              <span>clientes no Brasil e no exterior</span>
+            </div>
+          </div>
+          {testimonials.length > 0 ? (
+            <div className="testimonial-grid">
+              {testimonials.map((item) => (
+                <figure className="testimonial-card" key={item.name + item.company}>
+                  {item.result ? (
+                    <p className="testimonial-result">{item.result}</p>
+                  ) : null}
+                  <blockquote>“{item.quote}”</blockquote>
+                  <figcaption>
+                    <strong>{item.name}</strong>
+                    <span>{item.company}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          ) : null}
+        </section>
 
         <section className="process-section" id="processo">
           <div className="process-copy">
@@ -990,9 +1048,9 @@ export default function Home() {
                   value={selectedPackage}
                   onChange={(event) => setSelectedPackage(event.target.value)}
                 >
-                  <option>Vídeo Padrão — 30 segundos — cenário único — R$ 79,90</option>
-                  <option>Vídeo Personalizado — 30 segundos — R$ 157</option>
-                  <option>Vídeo Personalizado — 60 segundos — R$ 257</option>
+                  <option>Vídeo Essencial — 30 segundos — R$ 197</option>
+                  <option>Vídeo Profissional — 30 segundos — com mascote — R$ 297</option>
+                  <option>Vídeo Profissional — 60 segundos — com mascote — R$ 497</option>
                   <option>Projeto acima de 60 segundos</option>
                   <option>Ainda não sei qual escolher</option>
                 </select>

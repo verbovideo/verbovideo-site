@@ -411,12 +411,15 @@ test("keeps pricing on the full site and removes prices and forms from the landi
   const landing = await landingResponse.text();
 
   assert.match(home, /Vídeos profissionais para sua empresa/);
-  assert.match(home, /R\$ 79,90/);
-  assert.match(home, /aria-label="De R\$ 197 por R\$ 157"/);
-  assert.match(home, /R\$ 157/);
-  assert.match(home, /aria-label="De R\$ 297 por R\$ 257"/);
-  assert.match(home, /R\$ 257/);
-  assert.equal((home.match(/<del class="price-old"/g) ?? []).length, 2);
+  assert.doesNotMatch(home, /79,90/);
+  assert.doesNotMatch(home, /R\$ 157|R\$ 257/);
+  assert.match(home, /a partir de R\$ 197/);
+  assert.match(home, /aria-label="R\$ 197"/);
+  assert.match(home, /aria-label="R\$ 297"/);
+  assert.match(home, /aria-label="R\$ 497"/);
+  assert.equal((home.match(/<del class="price-old"/g) ?? []).length, 0);
+  assert.match(home, /id="resultados"/);
+  assert.match(home, /href="#resultados"/);
   assert.match(home, /VOX — Visão para criar\. Precisão para entregar\./);
   assert.match(home, /Visão estratégica\. Execução precisa\. Resultado que ganha alcance\./);
   assert.match(home, /src="\/assets\/vox\.png"/);
@@ -484,20 +487,20 @@ test("fires lead_created only for links that direct to WhatsApp", async () => {
     .map((href) => new URL(href).searchParams.get("text") ?? "");
   assert.ok(
     homeWhatsappMessages.some((message) =>
-      message.includes("Vídeo Padrão de 30 segundos") &&
-      message.includes("R$ 79,90"),
+      message.includes("Vídeo Essencial de 30 segundos") &&
+      message.includes("R$ 197"),
     ),
   );
   assert.ok(
     homeWhatsappMessages.some((message) =>
-      message.includes("Vídeo Personalizado de 30 segundos") &&
-      message.includes("R$ 157"),
+      message.includes("Vídeo Profissional de 30 segundos com mascote") &&
+      message.includes("R$ 297"),
     ),
   );
   assert.ok(
     homeWhatsappMessages.some((message) =>
-      message.includes("Vídeo Personalizado de 60 segundos") &&
-      message.includes("R$ 257"),
+      message.includes("Vídeo Profissional de 60 segundos com mascote") &&
+      message.includes("R$ 497"),
     ),
   );
 
