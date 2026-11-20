@@ -33,7 +33,16 @@ const localBindingConfig = {
     : [],
 };
 
+// No Render o site roda como servidor Node comum (vinext build + vinext start),
+// sem os plugins da hospedagem do ChatGPT Sites/Cloudflare.
+const isRender = process.env.RENDER === "true";
+
 export default defineConfig(async () => {
+  if (isRender) {
+    return { plugins: [vinext()] };
+  }
+
+
   // Keep Wrangler and Miniflare state project-local. These are non-secret tool
   // settings; application environment belongs in ignored `.env*` files.
   process.env.WRANGLER_WRITE_LOGS ??= "false";

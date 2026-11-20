@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: verbovideo-site
+    runtime: node
+    plan: free
+    region: virginia
+    branch: main
+    buildCommand: npm ci --include=dev && npx vinext build
+    startCommand: npx vinext start --port $PORT --hostname 0.0.0.0
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_VERSION
+        value: 22.13.0
