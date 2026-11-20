@@ -701,7 +701,9 @@ export default function Home() {
                   <strong>3D + CINEMA</strong>
                   <span>Produção personalizada</span>
                 </div>
-                <span className="reel-number">01 / 16</span>
+                <span className="reel-number">
+                  01 / {String(portfolio.length).padStart(2, "0")}
+                </span>
               </div>
             </div>
           </div>
@@ -726,6 +728,33 @@ export default function Home() {
           <div>
             <strong>ATÉ 3 DIAS ÚTEIS</strong>
             <span>prazo de entrega</span>
+          </div>
+        </section>
+
+        <section className="services-intro" id="servicos">
+          <div className="section-heading-row">
+            <div>
+              <p className="section-kicker">CONTEÚDO QUE GERA MOVIMENTO</p>
+              <h2>
+                Não fazemos apenas vídeos.
+                <br />
+                Criamos motivos para o seu cliente escolher você.
+              </h2>
+            </div>
+            <p className="section-side-copy">
+              Estratégia, criatividade e tecnologia para transformar a mensagem
+              da sua empresa em uma experiência visual.
+            </p>
+          </div>
+          <div className="service-preview-grid">
+            {services.map((service) => (
+              <article key={service.number}>
+                <span>{service.number}</span>
+                <h3>{service.title}</h3>
+                <p>{service.text}</p>
+                <i aria-hidden="true">↗</i>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -1075,33 +1104,6 @@ export default function Home() {
               Seus dados serão usados somente para atender à sua solicitação.
             </p>
           </form>
-        </section>
-
-        <section className="services-intro" id="servicos">
-          <div className="section-heading-row">
-            <div>
-              <p className="section-kicker">CONTEÚDO QUE GERA MOVIMENTO</p>
-              <h2>
-                Não fazemos apenas vídeos.
-                <br />
-                Criamos motivos para o seu cliente escolher você.
-              </h2>
-            </div>
-            <p className="section-side-copy">
-              Estratégia, criatividade e tecnologia para transformar a mensagem
-              da sua empresa em uma experiência visual.
-            </p>
-          </div>
-          <div className="service-preview-grid">
-            {services.map((service) => (
-              <article key={service.number}>
-                <span>{service.number}</span>
-                <h3>{service.title}</h3>
-                <p>{service.text}</p>
-                <i aria-hidden="true">↗</i>
-              </article>
-            ))}
-          </div>
         </section>
 
         <footer className="site-footer">
