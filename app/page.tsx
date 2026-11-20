@@ -597,10 +597,10 @@ export default function Home() {
           </a>
 
           <nav className="desktop-nav" aria-label="Navegação principal">
-            <a href="#servicos">Serviços</a>
             <a href="#portfolio">Portfólio</a>
-            <a href="#resultados">Resultados</a>
+            <a href="#servicos">Serviços</a>
             <a href="#formatos">Investimento</a>
+            <a href="#resultados">Resultados</a>
             <a href="#sobre">Nossa história</a>
           </nav>
 
@@ -731,33 +731,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="services-intro" id="servicos">
-          <div className="section-heading-row">
-            <div>
-              <p className="section-kicker">CONTEÚDO QUE GERA MOVIMENTO</p>
-              <h2>
-                Não fazemos apenas vídeos.
-                <br />
-                Criamos motivos para o seu cliente escolher você.
-              </h2>
-            </div>
-            <p className="section-side-copy">
-              Estratégia, criatividade e tecnologia para transformar a mensagem
-              da sua empresa em uma experiência visual.
-            </p>
-          </div>
-          <div className="service-preview-grid">
-            {services.map((service) => (
-              <article key={service.number}>
-                <span>{service.number}</span>
-                <h3>{service.title}</h3>
-                <p>{service.text}</p>
-                <i aria-hidden="true">↗</i>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <section className="work-section" id="portfolio">
           <div className="work-heading">
             <div>
@@ -810,6 +783,33 @@ export default function Home() {
             <a href={instagramUrl} target="_blank" rel="noreferrer">
               Ver portfólio no Instagram <b aria-hidden="true">→</b>
             </a>
+          </div>
+        </section>
+
+        <section className="services-intro" id="servicos">
+          <div className="section-heading-row">
+            <div>
+              <p className="section-kicker">CONTEÚDO QUE GERA MOVIMENTO</p>
+              <h2>
+                Não fazemos apenas vídeos.
+                <br />
+                Criamos motivos para o seu cliente escolher você.
+              </h2>
+            </div>
+            <p className="section-side-copy">
+              Estratégia, criatividade e tecnologia para transformar a mensagem
+              da sua empresa em uma experiência visual.
+            </p>
+          </div>
+          <div className="service-preview-grid">
+            {services.map((service) => (
+              <article key={service.number}>
+                <span>{service.number}</span>
+                <h3>{service.title}</h3>
+                <p>{service.text}</p>
+                <i aria-hidden="true">↗</i>
+              </article>
+            ))}
           </div>
         </section>
 
