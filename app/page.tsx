@@ -305,19 +305,18 @@ const packages = [
   {
     id: "essencial-30",
     name: "Vídeo Essencial 30s",
-    duration: "30 segundos • múltiplas cenas",
+    duration: "30 segundos • 1 mascote",
     price: "197",
     oldPrice: null,
     badge: "PARA COMEÇAR",
     description:
-      "Para empresas que querem divulgar produtos ou serviços com qualidade profissional, roteiro estratégico e acabamento de cinema.",
+      "Para empresas que querem divulgar produtos ou serviços com um mascote próprio, qualidade profissional e acabamento de cinema.",
     features: [
-      "Vídeo de 30 segundos",
-      "Produção com múltiplas cenas",
+      "1 mascote ou avatar personalizado",
+      "Até 6 cenas",
       "Roteiro e locução profissional",
       "Edição, trilha e identidade visual",
-      "Até 5 ajustes no vídeo",
-      "Atendimento pelo WhatsApp",
+      "Até 3 ajustes no vídeo",
     ],
     featured: false,
     whatsappMessage:
@@ -326,44 +325,44 @@ const packages = [
   {
     id: "profissional-30",
     name: "Vídeo Profissional 30s",
-    duration: "30 segundos • com mascote",
+    duration: "30 segundos • até 2 personagens",
     price: "297",
     oldPrice: null,
     badge: "MAIS ESCOLHIDO",
     description:
-      "Produção personalizada com mascote ou avatar exclusivo para dar rosto, voz e personalidade à sua marca.",
+      "Uma cena com diálogo entre personagens criados para a sua marca, pensada para anúncios que prendem a atenção.",
     features: [
-      "Produção com múltiplas cenas",
-      "Roteiro personalizado",
-      "Locução profissional",
-      "Edição e identidade visual",
-      "1 mascote ou avatar exclusivo",
+      "Até 2 personagens personalizados",
+      "Cenas livres com diálogo",
+      "Roteiro de anúncio com gancho nos 3 primeiros segundos",
+      "Locução, edição, trilha e identidade visual",
+      "Imagem do mascote em PNG para as redes",
       "Até 5 ajustes no vídeo",
     ],
     featured: true,
     whatsappMessage:
-      "Olá, equipe da VerboVídeo! Vim pelo site e tenho interesse no Vídeo Profissional de 30 segundos com mascote por R$ 297.",
+      "Olá, equipe da VerboVídeo! Vim pelo site e tenho interesse no Vídeo Profissional de 30 segundos com até 2 personagens por R$ 297.",
   },
   {
     id: "profissional-60",
     name: "Vídeo Profissional 60s",
-    duration: "60 segundos • com mascote",
+    duration: "60 segundos • até 3 personagens",
     price: "497",
     oldPrice: null,
     badge: "APRESENTAÇÃO COMPLETA",
     description:
       "Mais tempo para desenvolver a apresentação da empresa, do produto ou serviço com profundidade e força comercial.",
     features: [
-      "Produção com múltiplas cenas",
+      "Até 3 personagens personalizados",
+      "Cenas livres com diálogo",
       "Roteiro aprofundado",
-      "Locução profissional",
-      "Edição e identidade visual",
-      "1 mascote ou avatar exclusivo",
+      "Locução, edição, trilha e identidade visual",
+      "Imagem do mascote em PNG para as redes",
       "Até 8 ajustes no vídeo",
     ],
     featured: false,
     whatsappMessage:
-      "Olá, equipe da VerboVídeo! Vim pelo site e tenho interesse no Vídeo Profissional de 60 segundos com mascote por R$ 497.",
+      "Olá, equipe da VerboVídeo! Vim pelo site e tenho interesse no Vídeo Profissional de 60 segundos com até 3 personagens por R$ 497.",
   },
 ];
 
@@ -387,7 +386,7 @@ const faqs = [
   {
     question: "O mascote está incluso?",
     answer:
-      "Nos vídeos Profissionais de 30s e 60s, um mascote ou avatar exclusivo está incluso. O vídeo Essencial não inclui mascote. Personagens adicionais recebem orçamento conforme o projeto.",
+      "Sim, em todos os formatos. O Essencial inclui 1 mascote ou avatar personalizado, o Profissional 30s inclui até 2 personagens e o Profissional 60s até 3. Personagens adicionais recebem orçamento conforme o projeto.",
   },
   {
     question: "Qual é o prazo de produção?",
@@ -402,7 +401,7 @@ const faqs = [
   {
     question: "Posso pedir alterações?",
     answer:
-      "Sim. O vídeo de 30 segundos inclui até 5 ajustes, e o vídeo de 60 segundos inclui até 8 ajustes, mantendo o roteiro e o personagem já aprovados.",
+      "Sim. O Essencial inclui até 3 ajustes, o Profissional 30s até 5 e o Profissional 60s até 8, mantendo o roteiro e os personagens já aprovados.",
   },
 ];
 
@@ -417,9 +416,9 @@ function PricingSection({
         <p className="section-kicker">ESCOLHA O FORMATO IDEAL</p>
         <h2>Qualidade profissional em três opções bem definidas.</h2>
         <p>
-          Escolha entre o vídeo essencial e produções profissionais com
-          mascote exclusivo. Se tiver dúvida, nossa equipe orienta você pelo
-          WhatsApp.
+          Todos os formatos incluem mascote personalizado. Escolha quantos
+          personagens a sua história precisa. Se tiver dúvida, nossa equipe
+          orienta você pelo WhatsApp.
         </p>
       </div>
       <div className="pricing-grid three-columns">
@@ -496,7 +495,7 @@ function PricingSection({
 
 export default function Home() {
   const [selectedPackage, setSelectedPackage] = useState(
-    "Vídeo Profissional — 30 segundos — com mascote — R$ 297",
+    "Vídeo Profissional — 30 segundos — até 2 personagens — R$ 297",
   );
   const [requestSent, setRequestSent] = useState(false);
   const [activeFilter, setActiveFilter] = useState("Todos");
@@ -643,7 +642,7 @@ export default function Home() {
             </p>
             <p className="hero-price-callout">
               Vídeos profissionais para sua empresa <strong>a partir de R$ 197.</strong>
-              <span>Do vídeo essencial à produção completa com mascote exclusivo.</span>
+              <span>Todos com mascote personalizado, de 1 a 3 personagens.</span>
             </p>
 
             <div className="hero-actions">
@@ -715,7 +714,7 @@ export default function Home() {
           </div>
           <i />
           <div>
-            <strong>ESSENCIAL OU COM MASCOTE</strong>
+            <strong>MASCOTE EM TODOS OS FORMATOS</strong>
             <span>você escolhe o formato</span>
           </div>
           <i />
@@ -1048,9 +1047,9 @@ export default function Home() {
                   value={selectedPackage}
                   onChange={(event) => setSelectedPackage(event.target.value)}
                 >
-                  <option>Vídeo Essencial — 30 segundos — R$ 197</option>
-                  <option>Vídeo Profissional — 30 segundos — com mascote — R$ 297</option>
-                  <option>Vídeo Profissional — 60 segundos — com mascote — R$ 497</option>
+                  <option>Vídeo Essencial — 30 segundos — 1 mascote — R$ 197</option>
+                  <option>Vídeo Profissional — 30 segundos — até 2 personagens — R$ 297</option>
+                  <option>Vídeo Profissional — 60 segundos — até 3 personagens — R$ 497</option>
                   <option>Projeto acima de 60 segundos</option>
                   <option>Ainda não sei qual escolher</option>
                 </select>

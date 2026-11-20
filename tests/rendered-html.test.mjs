@@ -493,13 +493,13 @@ test("fires lead_created only for links that direct to WhatsApp", async () => {
   );
   assert.ok(
     homeWhatsappMessages.some((message) =>
-      message.includes("Vídeo Profissional de 30 segundos com mascote") &&
+      message.includes("Vídeo Profissional de 30 segundos com até 2 personagens") &&
       message.includes("R$ 297"),
     ),
   );
   assert.ok(
     homeWhatsappMessages.some((message) =>
-      message.includes("Vídeo Profissional de 60 segundos com mascote") &&
+      message.includes("Vídeo Profissional de 60 segundos com até 3 personagens") &&
       message.includes("R$ 497"),
     ),
   );
