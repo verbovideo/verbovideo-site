@@ -2,7 +2,7 @@ services:
   - type: web
     name: verbovideo-site
     runtime: node
-    plan: free
+    plan: starter
     region: virginia
     branch: main
     buildCommand: npm ci --include=dev && npx vinext build
